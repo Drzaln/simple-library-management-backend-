@@ -1,0 +1,56 @@
+const categoryModel = require('../models/category')
+const help = require('../helpers/response')
+
+module.exports = {
+    getCategory: (req, res) => {
+        categoryModel.getCategory()
+            .then((resultCategory) => {
+                help.response(res, resultCategory, 200)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+
+    },
+    insertCategory: (req, res) => {
+        const data = {
+            nama_kategori: req.body.nama_kategori,
+        }
+
+        categoryModel.insertCategory(data)
+            .then((resultCategory) => {
+                const result = resultCategory
+                help.response(res, result, 200, data)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    },
+
+    updateCategory: (req, res) => {
+        const id_kategori = req.params.id_category
+        const data = {
+            nama_kategori: req.body.nama_kategori
+        }
+        categoryModel.updateCategory(id_kategori, data)
+            .then((resultCategory) => {
+                const result = resultCategory
+                help.response(res, result, 200, [id_kategori, data])
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    },
+    deleteCategory: (req, res) => {
+        const id_kategori = req.params.id_category
+
+        categoryModel.deleteCategory(id_kategori)
+            .then((resultCategory) => {
+                const result = resultCategory
+                help.response(res, result, 200, id_kategori)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+}
