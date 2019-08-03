@@ -1,32 +1,39 @@
 const bookModel = require('../models/book.js')
 const resp = require('../helpers/response')
+const multer = require('multer')
+const path = require('path')
 
 module.exports = {
   getBook: (req, res) => {
-    bookModel.getBook()
-      .then((resultBook) => {
+    bookModel
+      .getBook()
+      .then(resultBook => {
         resp.response(res, resultBook, 200)
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error)
       })
   },
 
   getBookId: (req, res) => {
     const id_buku = req.params.id_buku
-    bookModel.getBookId(id_buku)
-      .then((resultBook) => {
+    bookModel
+      .getBookId(id_buku)
+      .then(resultBook => {
         resp.response(res, resultBook, 200, id_buku)
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error)
       })
   },
 
   insertBook: (req, res) => {
+    let fileName = '/images/' + req.file.filename
+    console.log('nama file', fileName)
     const data = {
       id_kategori: req.body.id_kategori,
       nama_buku: req.body.nama_buku,
+      image: fileName,
       ringkasan: req.body.ringkasan,
       penulis_buku: req.body.penulis_buku,
       gmb_buku: req.body.gmb_buku,
@@ -34,12 +41,13 @@ module.exports = {
       lokasi_buku: req.body.lokasi_buku
     }
 
-    bookModel.insertBook(data)
-      .then((resultBook) => {
+    bookModel
+      .insertBook(data)
+      .then(resultBook => {
         const result = resultBook
         resp.response(res, result, 200, data)
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error)
       })
   },
@@ -54,23 +62,25 @@ module.exports = {
       gmb_buku: req.body.gmb_buku,
       lokasi_buku: req.body.lokasi_buku
     }
-    bookModel.updateBook(id_buku, data)
-      .then((resultBook) => {
+    bookModel
+      .updateBook(id_buku, data)
+      .then(resultBook => {
         const result = resultBook
         resp.response(res, result, 200, [id_buku, data])
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error)
       })
   },
   deleteBook: (req, res) => {
     const id_buku = req.params.id_book
-    bookModel.deleteBook(id_buku)
-      .then((resultBook) => {
+    bookModel
+      .deleteBook(id_buku)
+      .then(resultBook => {
         const result = resultBook
         resp.response(res, result, 200, id_buku)
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error)
       })
   }

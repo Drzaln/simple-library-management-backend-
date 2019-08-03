@@ -12,10 +12,10 @@ module.exports = {
         console.log(error)
       })
   },
-  detBorrowing: (req, res) => {
-    const id = req.params.id
+  detBorrowingId: (req, res) => {
+    const id_user = req.params.id_user
     borrowingModel
-      .detBorrowing(id)
+      .detBorrowingId(id_user)
       .then(resultBorrowing => {
         help.response(res, resultBorrowing, 200)
       })

@@ -43,6 +43,7 @@ app.use(bodyParser.urlencoded({
     extended: true,
 }))
 app.use(bodyParser.json())
+app.use(express.static('uploads'))
 
 app.use(`/book`, bookRoute)
 app.use(`/category`, categoryRoute)

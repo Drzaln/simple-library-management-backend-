@@ -15,11 +15,11 @@ module.exports = {
       )
     })
   },
-  detBorrowing: id => {
+  detBorrowingId: id_user => {
     return new Promise((resolve, reject) => {
       conn.query(
         `SELECT * FROM tb_pinjaman INNER JOIN tb_buku ON tb_pinjaman.id_buku = tb_buku.id_buku INNER JOIN tb_kategori ON tb_buku.id_kategori = tb_kategori.id_kategori WHERE tb_pinjaman.id_user = ?`,
-        id,
+        id_user,
         (err, result) => {
           if (!err) {
             resolve(result)

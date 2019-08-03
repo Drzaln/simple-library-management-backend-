@@ -3,7 +3,7 @@ const conn = require('../config/connect')
 module.exports = {
     getBook: () => {
         return new Promise((resolve, reject) => {
-            conn.query('SELECT  * FROM  tb_buku LEFT JOIN tb_kategori  ON tb_buku.id_kategori = tb_kategori.id_kategori', (err, result) => {
+            conn.query('SELECT  * FROM  tb_buku LEFT JOIN tb_kategori  ON tb_buku.id_kategori = tb_kategori.id_kategori ORDER BY id_buku desc', (err, result) => {
                 if (!err) {
                     resolve(result)
                 } else {
