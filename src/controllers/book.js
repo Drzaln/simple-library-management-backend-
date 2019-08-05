@@ -2,6 +2,7 @@ const bookModel = require('../models/book.js')
 const resp = require('../helpers/response')
 const multer = require('multer')
 const path = require('path')
+const cloudinary = require('cloudinary')
 
 module.exports = {
   getBook: (req, res) => {
@@ -27,16 +28,33 @@ module.exports = {
       })
   },
 
-  insertBook: (req, res) => {
-    let fileName = '/images/' + req.file.filename
-    console.log('nama file', fileName)
+  insertBook: async(req, res) => {
+    // let fileName = '/images/' + req.file.filename
+    const path = req.file.path
+    const getUrl = async req => {
+      cloudinary.config({
+        cloud_name: 'drkil2jlo',
+        api_key: '742171894379478',
+        api_secret: 'E-YamDDHf2I6Y3k5TQ9sqh4A9Aw'
+      })
+
+      let dataImg
+      await cloudinary.uploader.upload(path, result => {
+        console.log(`coba cloud`, path)
+        dataImg = result.url
+      })
+      return dataImg
+    }
+    console.log('nama file', path)
+
     const data = {
       id_kategori: req.body.id_kategori,
       nama_buku: req.body.nama_buku,
-      image: fileName,
+      // image: await getUrl(),
       ringkasan: req.body.ringkasan,
       penulis_buku: req.body.penulis_buku,
-      gmb_buku: req.body.gmb_buku,
+      // gmb_buku: req.body.gmb_buku,
+      gmb_buku: await getUrl(),
       status_pinjam: 'ada',
       lokasi_buku: req.body.lokasi_buku
     }
