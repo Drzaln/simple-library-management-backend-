@@ -104,7 +104,7 @@ module.exports = {
               id_user: dataUser.id_user
             },
             process.env.SECRET_KEY,
-            { expiresIn: '10s' }
+            { expiresIn: '2h' }
           )
 
           delete dataUser.salt

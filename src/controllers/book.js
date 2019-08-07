@@ -6,8 +6,10 @@ const cloudinary = require('cloudinary')
 
 module.exports = {
   getBook: (req, res) => {
+    let limit = parseInt(req.query.limit) || 6
+    let page = parseInt(req.query.page) || 1
     bookModel
-      .getBook()
+      .getBook(limit, page)
       .then(resultBook => {
         resp.response(res, resultBook, 200)
       })
@@ -28,7 +30,7 @@ module.exports = {
       })
   },
 
-  insertBook: async(req, res) => {
+  insertBook: async (req, res) => {
     // let fileName = '/images/' + req.file.filename
     const path = req.file.path
     const getUrl = async req => {
