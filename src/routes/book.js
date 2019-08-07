@@ -19,7 +19,7 @@ let imageStore = multer.diskStorage({
 
 let upload = multer({ storage: imageStore, limits: { fileSize: 1000000000 } })
 
-Route.get('/', bookController.getBook)
+Route.get('/', bookController.getBook, bookController.searchBook)
   .get('/:id_buku', bookController.getBookId)
   .post(`/`, upload.single('image'), bookController.insertBook)
   .patch(`/:id_book`, bookController.updateBook)
