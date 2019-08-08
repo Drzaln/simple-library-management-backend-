@@ -104,7 +104,8 @@ module.exports = {
             {
               id_user: dataUser.id_user
             },
-            process.env.SECRET_KEY,
+            // process.env.SECRET_KEY,
+            'ulalalalala',
             { expiresIn: '2h' }
           )
 
