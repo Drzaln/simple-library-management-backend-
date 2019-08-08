@@ -30,22 +30,22 @@ module.exports = {
       })
   },
 
-  searchBook: (req, res) => {
-    const search = req.query.search || ''
-    bookModel
-      .searchBook(search)
-      .then(resultBook => {
-        const result = resultBook
-        if (result[0]) {
-          resp.response(res, result, 200)
-        } else {
-          resp.response(res, null, 404, 'Data Tidak Ditemukan')
-        }
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  },
+  // searchBook: (req, res) => {
+  //   const search = req.query.search || ''
+  //   bookModel
+  //     .searchBook(search)
+  //     .then(resultBook => {
+  //       const result = resultBook
+  //       if (result[0]) {
+  //         resp.response(res, result, 200)
+  //       } else {
+  //         resp.response(res, null, 404, 'Data Tidak Ditemukan')
+  //       }
+  //     })
+  //     .catch(error => {
+  //       console.log(error)
+  //     })
+  // },
 
   insertBook: async (req, res) => {
     // let fileName = '/images/' + req.file.filename
