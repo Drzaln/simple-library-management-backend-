@@ -6,12 +6,7 @@ const connect = sql.createConnection({
     // user: process.env.DB_USER,
     // password: process.env.DB_PASS,
     // database: process.env.DB_NAME,
-
-    // host: 'localhost',
-    // user: 'root',
-    // password: '',
-    // database: 'buku',
-
+    
     host: "remotemysql.com",
     user: "NsS3iZedQb",
     password: "ahOgeEQ2oy",

@@ -29,7 +29,7 @@ module.exports = {
       id_user: req.body.id_user,
       nama_user: req.body.nama_user,
       tgl_pinjam: new Date(),
-      lama_pinjam: req.body.lama_pinjam,
+      lama_pinjam: req.body.lama_pinjam
       // tgl_kembali: req.body.tgl_kembali,
       // denda: req.body.denda
     }
@@ -47,12 +47,14 @@ module.exports = {
 
   updateBorrowing: (req, res) => {
     const id_buku = req.params.id_buku
-    const data = 'ada'
+    const data = {
+      tgl_kembali: new Date()
+    }
     borrowingModel
-      .updateBorrowing(id_buku, data)
+      .updateBorrowing(data, id_buku)
       .then(resultBorrowing => {
         const result = resultBorrowing
-        help.response(res, result, 200, [id_buku, data])
+        help.response(res, result, 200, [data, id_buku])
       })
       .catch(error => {
         console.log(error)
