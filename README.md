@@ -1,3 +1,10 @@
+<div align=center>
+<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1280px-Node.js_logo.svg.png width="200px;" alt="X"/>
+</div>
+<div align=center>
+<img src=https://www.diduenjoy.com/assets/home/integrations/rest-api-logo-860fda312cc922cddb94081c1fb0c0442777b596dbae3fedada2bed7c5232193.png width="100px;" alt="X"/>
+</div>
+
 ## Book REST
 ***
 ### Maybe useful
@@ -13,10 +20,9 @@
 - Code editor
 
 ### How to
-1. Copy url repo ini `https://github.com/Drzaln/bootcamp-arkademy/tree/master/minggu-2/Tugas1_24-juni-19`
-2. Download file pada repo ini dengan menggunakan tool ini [DownGit](https://minhaskamal.github.io/DownGit/)
-3. Extract dan masuk ke direktori file
-4. Jalankan perintah `$ npm install`
+1. Copy url repo ini `https://github.com/Drzaln/simple-library-management-backend-.git`
+2. ```cd simple-library-management-backend-```
+3. Jalankan perintah `$ npm install && npm start`
 
 ### .env file
 ```
